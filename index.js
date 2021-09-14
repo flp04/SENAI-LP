@@ -1,3 +1,4 @@
 let nomeFlutuante = "Jansen";
 console.log(nomeFlutuante);
-const  
+const  nomeFixo = "Jansen";
+console.log(nomeFixo);
