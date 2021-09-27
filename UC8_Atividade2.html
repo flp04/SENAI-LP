@@ -1,0 +1,21 @@
+<script>
+    let dataEvento = prompt("Informe a data do evento no formato DD/MM/AAAA.");
+    dataEvento = dataEvento.split('/');
+    dataEvento = new Date(dataEvento[2], dataEvento[1], dataEvento[0]);
+    const hoje = new Date();
+    if(dataEvento.valueOf() >= hoje.valueOf()){
+        let idade = prompt("Qual sua idade?");
+        if(idade>=18){
+            let evento = prompt("Palestra 1: Jansen - 98 cadastrados\nPalestra 2: Bill Gates - 82 cadastrados\nPalestra 3: Elon Musk 36 cadastrados\nPalestra 4: Mano Brown - 100 cadastrados\n\n Qual evento irá participar? Informe somente o número.");
+            if(evento != 4){
+                alert("Faça seu cadastro...");
+            }else{
+                alert("Palestra já atingiu o limite de cadastros.");
+            }
+        }else{
+            alert("Eventos somente para maiores de 18 anos.");
+        }
+    }else{
+        alert("Cadastro não permitido. Data inválida");
+    }
+</script>
