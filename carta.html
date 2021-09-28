@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .carta{
+            border: black;
+            border: solid;
+            border: 1px;
+            background-color: black;
+            width: 100px;
+            height: 150px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="carta">
+        <span id="valor"></span>
+        <span id="naipe"></span>
+    </div>
+    <button onclick="embaralhar()">Embaralhar</button>
+
+    <script>
+        class Carta{
+            constructor(valor, naipe){
+                this.valor = valor;
+                this.naipe = naipe;
+            }
+        }
+        function construirBaralho(){
+            var  baralho = [];
+            for(var i = 0;i < 14;i++){
+                for(var n = 0;n < 4;n++){
+                    var carta = new Carta(i, n);
+                    baralho.push(carta);
+                }
+            }
+            return baralho;
+        }
+        var x = construirBaralho();
+        document.getElementById("valor").innerText = x[0].valor;
+        document.getElementById("naipe").innerText = x[0].naipe;        
+        function embaralhar(){
+            for(var i = 0;i < 3;i++){
+                for(let i = x.length - 1; i > 0; i--){
+                    // Escolhendo elemento aleatório
+                    const j = Math.floor(Math.random() * (i + 1));
+                    // Reposicionando elemento
+                    [x.domino[i], x.domino[j]] = [x.domino[j], x.domino[i]];
+                }
+            }
+            document.getElementById("valor").innerText = x[5].valor;
+            document.getElementById("naipe").innerText = x[5].naipe;
+        }
+
+    </script>
+</body>
+</html>
