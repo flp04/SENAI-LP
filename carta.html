@@ -10,17 +10,27 @@
             border: black;
             border: solid;
             border: 1px;
+            border-radius: 10%;
             background-color: black;
             width: 100px;
             height: 150px;
             color: white;
+        }
+        #valor{
+            margin: 5px;
+            font-size: 40px;
+            color: violet;
+        }
+        #naipe{
+            text-align: center;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
     <div class="carta">
         <span id="valor"></span>
-        <span id="naipe"></span>
+        <p id="naipe"></p>
     </div>
     <button onclick="embaralhar()">Embaralhar</button>
 
@@ -33,28 +43,65 @@
         }
         function construirBaralho(){
             var  baralho = [];
-            for(var i = 0;i < 14;i++){
-                for(var n = 0;n < 4;n++){
-                    var carta = new Carta(i, n);
+            for(let i = 1;i < 14;i++){
+                for(let n = 0;n < 4;n++){
+                    let carta = new Carta(i, n);
                     baralho.push(carta);
                 }
             }
+            for(let i = 1;i < baralho.length;i++){
+                switch(baralho[i].valor){
+                    case 1:
+                        baralho[i].valor = "A";
+                        break;
+                    case 11:
+                        baralho[i].valor = "J";
+                        break;
+                    case 12:
+                        baralho[i].valor = "Q";
+                        break;
+                    case 13:
+                        baralho[i].valor = "K";
+                        break;
+                    }
+                switch(baralho[i].naipe){
+                    case 0:
+                        baralho[i].naipe = "Ouro";
+                        break
+                    case 1:
+                        baralho[i].naipe = "Espada";
+                        break
+                    case 2:
+                        baralho[i].naipe = "Copas";
+                        break
+                    case 3:
+                        baralho[i].naipe = "Paus";
+                        break
+                }
+            }
+            alert(baralho.length);
             return baralho;
         }
         var x = construirBaralho();
+
         document.getElementById("valor").innerText = x[0].valor;
-        document.getElementById("naipe").innerText = x[0].naipe;        
+        document.getElementById("naipe").innerText = x[2].naipe;
+
         function embaralhar(){
             for(var i = 0;i < 3;i++){
-                for(let i = x.length - 1; i > 0; i--){
+            for(let i = x.length - 1; i > 0; i--){
                     // Escolhendo elemento aleatório
-                    const j = Math.floor(Math.random() * (i + 1));
-                    // Reposicionando elemento
-                    [x.domino[i], x.domino[j]] = [x.domino[j], x.domino[i]];
-                }
+                const j = Math.floor(Math.random() * (i + 1));
+                // Reposicionando elemento
+                [x[i], x[j]] = [x[j], x[i]];
             }
-            document.getElementById("valor").innerText = x[5].valor;
-            document.getElementById("naipe").innerText = x[5].naipe;
+        }
+
+            //alert("porra");
+            //let d = document.getElementById("valor");
+            //d.innerText = x[6].valor;
+            document.getElementById("valor").innerHTML = x[0].valor;
+            document.getElementById("naipe").innerHTML = x[0].naipe;
         }
 
     </script>
